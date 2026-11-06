@@ -513,7 +513,7 @@ const defaultProducts = [
   {id:220, name:"طقم جونت زان 3 قطع", royal:"👑 إصدار ملكي", cat:"أثاث ملكي", desc:"طقم جونت زان، 3 قطع، صدف طبيعي.", story:"خشب زان أصلي.", price:"7.000 د.ك", oldPrice:"8.000 د.ك", stock:"in", featured:"no", image:""}
 ];
 
-let products = JSON.parse(localStorage.getItem('asala_products_v16')) || defaultProducts;
+let products = [];
 let siteMedia = JSON.parse(localStorage.getItem('asala_media_v16')) || { logo: 'logo.jpg', heroVid: '', heroImg: 'cover.jpg' };
 let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v16')) || {
   name: "أصالة التراث المصري",
