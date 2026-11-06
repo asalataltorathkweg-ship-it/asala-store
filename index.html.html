@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أصالة التراث المصري | ASALA EGYPTIAN HERITAGE</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#6d2230;
+  --wine-deep:#4a1620;
+  --gold:#c4a76b;
+  --gold-light:#d9bd82;
+  --ivory:#f7f1e3;
+  --ivory-soft:#fbf7ee;
+  --ink:#2a2320;
+  --muted:#7b6f63;
+  --line:rgba(196,167,107,.25);
+  --radius:20px;
+  --shadow:0 20px 50px rgba(74,22,32,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);line-height:1.9;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none}
+h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
+
+.topbar{background:var(--wine-deep);color:var(--gold-light);text-align:center;padding:12px 20px;font-size:14px;font-weight:600;border-bottom:1px solid rgba(196,167,107,0.2)}
+.header{position:sticky;top:0;z-index:100;background:rgba(247,241,227,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:15px 40px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:15px}
+.brand-logo{width:65px;height:65px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:var(--ivory-soft)}
+.brand-text h1{font-size:22px;color:var(--wine-deep);line-height:1.2}
+.brand-text span{font-size:11px;color:var(--gold);letter-spacing:1px;font-weight:700;display:block}
+
+.nav{display:flex;gap:25px;font-weight:700;font-size:15px;color:var(--wine)}
+.nav a:hover{color:var(--gold)}
+
+.hero{position:relative;height:85vh;min-height:600px;border-radius:var(--radius);overflow:hidden;margin:25px auto;max-width:1400px;background:var(--wine-deep);display:flex;align-items:flex-end;box-shadow:var(--shadow)}
+.hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85}
+.hero-overlay{position:relative;z-index:10;width:100%;padding:80px 60px;color:#fff;background:linear-gradient(0deg,rgba(20,10,8,0.9) 0%,rgba(20,10,8,0.4) 60%,transparent 100%)}
+.hero-sub{color:var(--gold-light);font-size:16px;font-weight:700;letter-spacing:2px;margin-bottom:12px;display:block}
+.hero h2{font-size:clamp(34px,5vw,56px);color:#fff;margin-bottom:20px;text-shadow:0 4px 20px rgba(0,0,0,0.6);line-height:1.3}
+.hero p{font-size:18px;max-width:780px;opacity:0.95;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 35px;border-radius:40px;font-weight:700;transition:0.3s;font-size:16px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--wine-deep);box-shadow:0 10px 30px rgba(196,167,107,0.4)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(196,167,107,0.6)}
+
+.trust-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));background:var(--ivory-soft);border:1px solid var(--line);border-radius:var(--radius);max-width:1400px;margin:0 auto 60px;padding:30px;gap:20px;box-shadow:var(--shadow)}
+.trust-item{display:flex;gap:15px;align-items:center}
+.trust-item .icon{font-size:38px}
+.trust-item h3{font-size:16px;margin-bottom:4px;color:var(--wine-deep)}
+.trust-item p{font-size:13px;color:var(--muted)}
+
+.section-title{text-align:center;margin:50px 0 25px}
+.section-title h2{font-size:32px;color:var(--wine-deep);margin-bottom:10px}
+.section-title p{color:var(--muted);font-size:15px}
+
+.filter-bar{max-width:1400px;margin:0 auto 30px;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.search-input{padding:12px 20px;border-radius:30px;border:1px solid var(--line);width:300px;background:#fff;font-size:14px}
+.cat-pills{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;max-width:100%}
+.cat-pill{background:#fff;border:1px solid var(--line);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:bold;color:var(--wine);cursor:pointer;white-space:nowrap;transition:0.3s}
+.cat-pill.active, .cat-pill:hover{background:var(--wine);color:#fff}
+
+.products-grid{max-width:1400px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:35px}
+.product-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:0.4s;display:flex;flex-direction:column;border:1px solid var(--line);cursor:pointer}
+.product-card:hover{transform:translateY(-10px);box-shadow:0 30px 60px rgba(74,22,32,0.2)}
+.product-img{height:320px;position:relative;overflow:hidden;background:#efe6d3}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s}
+.product-card:hover .product-img img{transform:scale(1.08)}
+.badge{position:absolute;top:15px;right:15px;background:var(--wine);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.product-info{padding:25px;display:flex;flex-direction:column;flex:1}
+.royal-tag{color:var(--gold);font-size:13px;font-weight:700;margin-bottom:8px}
+.product-info h3{font-size:22px;margin-bottom:10px;line-height:1.3}
+.product-info p{font-size:14px;color:var(--muted);margin-bottom:15px;flex:1}
+.product-price{font-size:24px;font-weight:900;color:var(--wine);margin-bottom:20px;font-family:'Amiri',serif}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;display:flex;justify-content:center;align-items:center;gap:8px;padding:14px;border-radius:12px;font-weight:700;transition:0.3s}
+.btn-wa:hover{opacity:0.9}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 80px}
+.page-btn{background:#fff;border:1px solid var(--line);color:var(--wine);padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;transition:0.3s}
+.page-btn.active, .page-btn:hover{background:var(--wine);color:#fff}
+
+.product-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:2500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.product-modal.open{display:flex}
+.modal-box{background:#fff;border-radius:var(--radius);max-width:900px;width:100%;max-height:92vh;overflow-y:auto;position:relative;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+@media(max-width:768px){.modal-box{grid-template-columns:1fr}}
+.modal-close{position:absolute;top:15px;left:15px;background:#333;color:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+.modal-img-con{background:#efe6d3;min-height:300px;display:flex;align-items:center;justify-content:center}
+.modal-img-con img{width:100%;height:100%;object-fit:cover}
+.modal-details{padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+.modal-details h2{font-size:24px;color:var(--wine-deep);margin-bottom:8px}
+.modal-details .price{font-size:22px;font-weight:900;color:var(--wine);margin:10px 0;font-family:'Amiri',serif}
+
+.checkout-form{margin-top:15px;border-top:1px solid var(--line);padding-top:15px}
+.checkout-form input{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+
+.delivery-section{max-width:1400px;margin:60px auto;padding:0 24px}
+.delivery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px}
+.delivery-card{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.delivery-card h3{font-size:20px;color:var(--wine-deep);margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.delivery-card ul{list-style:none;font-size:14px;color:var(--ink)}
+.delivery-card ul li{margin-bottom:10px;padding-right:15px;position:relative}
+.delivery-card ul li::before{content:"•";color:var(--gold);position:absolute;right:0;font-weight:bold}
+
+.story-section{background:var(--wine-deep);color:#fff;padding:90px 24px;margin:60px 0;text-align:center}
+.story-box{max-width:900px;margin:0 auto}
+.story-box h2{font-size:40px;color:var(--gold-light);margin-bottom:25px}
+.story-box p{font-size:17px;line-height:2.3;opacity:0.95;margin-bottom:20px;text-align:justify}
+
+.footer{background:var(--wine-deep);color:#fff;padding:80px 24px 30px;border-top:1px solid rgba(196,167,107,0.3)}
+.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;margin-bottom:50px}
+.footer h4{color:var(--gold-light);font-size:18px;margin-bottom:20px}
+.footer p, .footer a{color:rgba(255,255,255,0.85);font-size:15px;margin-bottom:10px;display:block}
+.footer a:hover{color:var(--gold)}
+.admin-trigger{display:inline-block;margin-top:15px;color:var(--gold);border:1px dashed var(--gold);padding:8px 20px;border-radius:30px;cursor:pointer;font-size:13px}
+.admin-trigger:hover{background:var(--gold);color:var(--wine-deep)}
+.footer-copy{text-align:center;border-top:1px solid rgba(255,255,255,0.1);padding-top:25px;font-size:13px;color:rgba(255,255,255,0.5)}
+
+.admin-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.admin-modal.open{display:flex}
+.admin-box{background:#fff;border-radius:var(--radius);max-width:1100px;width:100%;max-height:92vh;overflow-y:auto;padding:40px;color:#222;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+.admin-close{position:absolute;top:20px;left:20px;background:#333;color:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.admin-tabs{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap;border-bottom:2px solid #eee;padding-bottom:15px}
+.admin-tab-btn{background:#f1ecdf;border:none;padding:10px 18px;border-radius:8px;font-weight:bold;cursor:pointer;color:var(--wine)}
+.admin-tab-btn.active{background:var(--wine);color:#fff}
+.admin-tab-content{display:none}
+.admin-tab-content.active{display:block}
+.form-control{width:100%;padding:14px;margin-bottom:16px;border:1px solid #ddd;border-radius:10px;font-size:15px;background:#faf6f0}
+.btn-admin{background:var(--wine);color:#fff;padding:14px 25px;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px;width:100%}
+.btn-danger{background:#c0392b;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold}
+.btn-edit{background:var(--gold);color:var(--wine-deep);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;margin-left:8px}
+.admin-product-row{display:flex;justify-content:space-between;align-items:center;background:#faf6f0;padding:15px;border-radius:10px;margin-bottom:12px;border:1px solid #eae5de}
+
+.wa-float{position:fixed;bottom:30px;left:30px;width:65px;height:65px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:99;transition:0.3s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:36px;height:36px;fill:#fff}
+
+@media(max-width:768px){.nav{display:none}.hero{height:70vh}.hero-overlay{padding:40px 20px}}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbarText">🚚 توصيل من الكويت إلى الخليج والعالم — تفصيل 15-20 يومًا — ضمان أصالة مدى الحياة</div>
+
+<header class="header">
+  <div class="brand">
+    <img id="brandLogo" class="brand-logo" src="logo.jpg" alt="لوجو أصالة التراث">
+    <div class="brand-text">
+      <h1 id="storeName">أصالة التراث المصري</h1>
+      <span id="sloganText">عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#featured">المنتجات المختارة</a>
+    <a href="#products">المجموعة الكاملة</a>
+    <a href="#delivery">الشحن والتوصيل</a>
+    <a href="#story">حكاية الصنعة</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+</header>
+
+<section class="hero" id="heroSection">
+  <div id="heroMediaContainer">
+    <img src="cover.jpg" alt="غلاف أصالة التراث">
+  </div>
+  <div class="hero-overlay">
+    <span class="hero-sub" id="heroSubText">تراث يُحكى… وفن يُقتنى</span>
+    <h2 id="heroTitle">قطعة من مصر،<br>وحكاية في بيتك.</h2>
+    <p id="heroDesc">من بريق الصدف الطبيعي ودِفء خشب الزان الأحمر، نصنع قطعاً تحمل روح الأرابيسك المصري. تفاصيل تُنسج باليد، صدفة صدفة، لتبقى معك عمراً.</p>
+    <a href="#featured" class="btn btn-gold" id="heroBtnText">تسوّق المنتجات المختارة ←</a>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-item"><div class="icon">✋</div><div><h3>صناعة يدوية 100%</h3><p>كل صدفة توضع بيد الحرفي</p></div></div>
+  <div class="trust-item"><div class="icon">🐚</div><div><h3>صدف طبيعي أصلي</h3><p>أبيض، أزرق أبالوني، وأسترالي</p></div></div>
+  <div class="trust-item"><div class="icon">♾️</div><div><h3>أصالة مدى الحياة</h3><p>ضمان شامل على البنية والتطعيم</p></div></div>
+  <div class="trust-item"><div class="icon">🌍</div><div><h3>من الكويت إلى العالم</h3><p>شحن آمن وتغليف خشبي ملكي</p></div></div>
+</div>
+
+<div class="section-title" id="featured">
+  <h2>🌟 منتجات مختارة بعناية</h2>
+  <p>أبرز التحف الفنية المختارة خصيصاً لتزين واجهة متجرك.</p>
+</div>
+<div class="products-grid" id="featuredGrid"></div>
+
+<div class="section-title" id="products">
+  <h2>🛍️ التسوق حسب الأقسام — اختر ما تبحث عنه</h2>
+  <p>اختر ما تبحث عنه وتصفح جميع المنتجات مقسمة على صفحات بكل سهولة.</p>
+</div>
+
+<div class="filter-bar">
+  <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن تحفة أو منتج..." oninput="filterProducts()">
+  <div class="cat-pills" id="catPills">
+    <button class="cat-pill active" onclick="setCategory('الكل', this)">الكل</button>
+    <button class="cat-pill" onclick="setCategory('ترابيزات', this)">ترابيزات</button>
+    <button class="cat-pill" onclick="setCategory('طاولات زهر وشطرنج', this)">طاولات زهر وشطرنج</button>
+    <button class="cat-pill" onclick="setCategory('صناديق وشكمجيات', this)">صناديق وشكمجيات</button>
+    <button class="cat-pill" onclick="setCategory('صواني تقديم', this)">صواني تقديم</button>
+    <button class="cat-pill" onclick="setCategory('مباخر', this)">مباخر</button>
+    <button class="cat-pill" onclick="setCategory('أثاث مكتبي', this)">أثاث مكتبي</button>
+    <button class="cat-pill" onclick="setCategory('لوحات قرآنية', this)">لوحات قرآنية</button>
+    <button class="cat-pill" onclick="setCategory('مداخل وبيهات', this)">مداخل وبيهات</button>
+  </div>
+</div>
+
+<div class="products-grid" id="productsGrid"></div>
+<div class="pagination" id="paginationContainer"></div>
+
+<div class="product-modal" id="productModal" onclick="if(event.target === this) closeModal()">
+  <div class="modal-box">
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <div class="modal-img-con" id="modalImgContainer">
+      <div style="font-size:80px;">🐚</div>
+    </div>
+    <div class="modal-details">
+      <div>
+        <span class="royal-tag" id="modalRoyal">👑 إصدار ملكي</span>
+        <h2 id="modalTitle">اسم المنتج</h2>
+        <p id="modalDesc" style="color:var(--muted); font-size:14px; margin-bottom:8px;"></p>
+        <div id="modalStory" class="product-story" style="font-size:12px;"></div>
+        <div class="price" id="modalPrice">0.000 د.ك</div>
+      </div>
+      
+      <div class="checkout-form">
+        <h4 style="font-size:15px; color:var(--wine); margin-bottom:8px;">📋 بيانات إتمام الطلب السريع</h4>
+        <input type="text" id="clientName" placeholder="اسم الكريم *" required>
+        <input type="tel" id="clientPhone" placeholder="رقم الهاتف للتواصل *" required>
+        <input type="text" id="clientAddress" placeholder="المنطقة والعنوان (الكويت أو الدولة) *" required>
+        <button class="btn-wa" onclick="submitOrderViaWa()">💬 إرسال الطلب عبر الواتساب</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="delivery-section" id="delivery">
+  <div class="section-title" style="margin:20px 0;">
+    <h2>🚚 تفاصيل التوصيل والشحن</h2>
+    <p>نصل إليك أينما كنت بتغليف ملكي وحماية كاملة لقطعتك</p>
+  </div>
+  <div class="delivery-grid">
+    <div class="delivery-card">
+      <h3>🇰🇼 داخل الكويت</h3>
+      <ul>
+        <li><strong>المدة:</strong> 2 - 4 أيام عمل.</li>
+        <li><strong>التكلفة:</strong> مجاني (توصيل مجاني).</li>
+        <li><strong>الدفع:</strong> عند الاستلام أو رابط معتمد للدفع.</li>
+        <li>يشمل جميع المناطق (العاصمة، حولي، الأحمدي، الجهراء، الفروانية).</li>
+      </ul>
+    </div>
+    <div class="delivery-card">
+      <h3>✈️ دول الخليج (GCC)</h3>
+      <ul>
+        <li>السعودية، الإمارات، قطر، البحرين، عمان.</li>
+        <li><strong>المدة:</strong> 10 - 15 يوم عمل.</li>
+        <li><strong>طريقة الشحن:</strong> بري أو جوي حسب الطلب.</li>
+        <li>التغليف خشبي ملكي وتزويد برقم التتبع.</li>
+      </ul>
+    </div>
+    <div class="delivery-card">
+      <h3>🌍 الشحن العالمي</h3>
+      <ul>
+        <li>أوروبا، أمريكا وجميع العالم.</li>
+        <li><strong>المدة:</strong> 10 - 15 يوم عمل.</li>
+        <li><strong>طريقة الشحن:</strong> جوي للسرعة أو بحري للتوفير.</li>
+        <li>تغليف ملكي مضاد للصدمات مع التتبع.</li>
+      </ul>
+    </div>
+    <div class="delivery-card">
+      <h3>🏺 التوصيل والتفصال والشحن من مصر للكويت</h3>
+      <ul>
+        <li><strong>القطع الجاهزة:</strong> 1-2 يوم تجهيز وتوصيل.</li>
+        <li><strong>حسب الطلب:</strong> 15-25 يوم عمل للتفصيل.</li>
+        <li>ضمان أصالة مدى الحياة وثبات التطعيمات.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="story-section" id="story">
+  <div class="story-box">
+    <h2>عاشق ومعشوق — حكاية فن التصديف العريق</h2>
+    <p>
+      تعتبر صناعة الصدف المصري (أو فن التصديف) واحدة من أعرق الحرف التراثية اليدوية في مصر، حيث تمتد جذورها العميقة إلى العصور العباسية والفاطمية، وبلغت ذروة ازدهارها في العهد المملوكي. تعتمد هذه الحرفة الفريدة على المزاوجة بين صلابة خشب الأشجار وسحر الطبيعة البحرية الكامن في عرق اللؤلؤ الأبيض البراق المستخرج من البحر الأحمر والبحار العالمية، لإنتاج قطع فنية تبدأ من علب المجوهرات الصغيرة وتصل إلى صالونات وغرف نوم ملكية كاملة.
+    </p>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="footer-content">
+    <div>
+      <h4 id="footerName">أصالة التراث المصري</h4>
+      <p>عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر.</p>
+      <span class="admin-trigger" onclick="openLoginModal()">⚙️ دخول لوحة التحكم (الادمن)</span>
+    </div>
+    <div>
+      <h4>تواصل معنا</h4>
+      <p>💬 واتساب: <a href="https://wa.me/96551118069" target="_blank">+965 51118069</a></p>
+      <p>📧 البريد: asalat.al.torath.Kw.Eg@GMAIL.COM</p>
+    </div>
+    <div>
+      <h4>تابع حكايتنا الرسمية</h4>
+      <a href="https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr" target="_blank">📘 فيسبوك</a>
+      <a href="https://www.instagram.com/asalat.al.torath.kw.eg" target="_blank">📸 انستغرام</a>
+      <a href="https://www.tiktok.com/@user1178392961513" target="_blank">🎵 تيك توك</a>
+    </div>
+  </div>
+  <div class="footer-copy">© <span id="yearSpan"></span> أصالة التراث المصري — جميع الحقوق محفوظة. عاشق ومعشوق.</div>
+</footer>
+
+<a href="https://wa.me/96551118069" target="_blank" class="wa-float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="admin-modal" id="loginModal">
+  <div class="admin-box" style="max-width: 420px;">
+    <div class="admin-close" onclick="closeLoginModal()">✕</div>
+    <h3 style="color:var(--wine); margin-bottom: 20px; text-align:center;">👑 تسجيل دخول المشرف</h3>
+    <input type="email" id="adminEmailInput" class="form-control" placeholder="البريد الإلكتروني" value="admin@asala.com">
+    <input type="password" id="adminPassInput" class="form-control" placeholder="كلمة المرور" value="123456">
+    <button class="btn-admin" onclick="checkAdminLogin()">دخول لوحة التحكم</button>
+  </div>
+</div>
+
+<div class="admin-modal" id="adminPanelModal">
+  <div class="admin-box">
+    <div class="admin-close" onclick="closeAdminPanel()">✕</div>
+    <h2 style="color:var(--wine); margin-bottom: 20px;">👑 لوحة تحكم أصالة التراث</h2>
+    
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. المنتجات (<span id="tabProdBadge">60</span>)</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-hero')">2. الغلاف والوسائط</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-design')">3. تصميم والألوان</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-delivery-edit')">4. الشحن والتوصيل</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-identity')">5. اللوجو والهوية</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-backup')">6. النسخ الاحتياطي ورفع الداتا كاملة</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-sec')">7. حساب المشرف</button>
+    </div>
+
+    <div id="tab-prod" class="admin-tab-content active">
+      <div id="formSection" style="background:#faf6f0; padding:20px; border-radius:12px; margin-bottom:25px; border:1px solid var(--line);">
+        <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج</h3>
+        <input type="hidden" id="edit-id">
+        <input type="text" id="p-name" class="form-control" placeholder="اسم المنتج *">
+        <select id="p-cat" class="form-control">
+          <option value="ترابيزات">ترابيزات</option>
+          <option value="طاولات زهر وشطرنج">طاولات زهر وشطرنج</option>
+          <option value="صناديق وشكمجيات">صناديق وشكمجيات</option>
+          <option value="صواني تقديم">صواني تقديم</option>
+          <option value="مباخر">مباخر</option>
+          <option value="أثاث مكتبي">أثاث مكتبي</option>
+          <option value="لوحات قرآنية">لوحات قرآنية</option>
+          <option value="مداخل وبيهات">مداخل وبيهات</option>
+          <option value="أثاث ملكي">أثاث ملكي</option>
+          <option value="ديكورات">ديكورات</option>
+          <option value="إكسسوارات">إكسسوارات</option>
+        </select>
+        <input type="text" id="p-royal" class="form-control" placeholder="إصدار المنتج (العنوان الملكي)">
+        <textarea id="p-desc" class="form-control" placeholder="الوصف المختصر"></textarea>
+        <textarea id="p-story" class="form-control" placeholder="حكاية القطعة"></textarea>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+          <input type="text" id="p-price" class="form-control" placeholder="السعر الحالي (د.ك) *">
+          <input type="text" id="p-old" class="form-control" placeholder="السعر القديم (د.ك)">
+        </div>
+        <label style="font-size:13px; font-weight:bold; color:var(--wine); margin-bottom:5px; display:block;">🌟 عرض في الواجهة (منتج مختار):</label>
+        <select id="p-featured" class="form-control">
+          <option value="no">لا (يعرض في الصفحات العادية)</option>
+          <option value="yes">نعم (يثبت في الواجهة الرئيسية)</option>
+        </select>
+        
+        <label style="font-size:14px; font-weight:bold; color:var(--wine); margin-bottom:5px; display:block;">🖼️ رفع صورة للمنتج مباشرة من جهازك:</label>
+        <input type="file" id="p-file" class="form-control" accept="image/*" onchange="handleProductFile(event)" style="background:#fff; border:2px dashed var(--gold);">
+        <input type="hidden" id="p-image-val">
+
+        <select id="p-stock" class="form-control">
+          <option value="in">متوفر للتفصيل والتوصيل</option>
+          <option value="out">نفدت الكمية مؤقتاً</option>
+        </select>
+        <button class="btn-admin" onclick="saveProductData()">💾 حفظ المنتج</button>
+      </div>
+      <div>
+        <h3>المنتجات الحالية (<span id="prodCount">0</span>)</h3>
+        <div id="adminProductsList"></div>
+      </div>
+    </div>
+
+    <div id="tab-hero" class="admin-tab-content">
+      <h3>🎬 الغلاف (صورة أو فيديو MP4)</h3>
+      <input type="file" class="form-control" accept="video/mp4" onchange="uploadHeroVideo(event)">
+      <input type="file" class="form-control" accept="image/*" onchange="uploadHeroImage(event)">
+      <button class="btn-admin" style="background:#c0392b; margin-top:10px;" onclick="clearHeroMedia()">🗑️ الغلاف الافتراضي</button>
+    </div>
+
+    <div id="tab-design" class="admin-tab-content">
+      <h3>🎨 تخصيص ألوان الهوية الملكية</h3>
+      <label>اللون الرئيسي (عنابي):</label>
+      <input type="color" id="colorWine" class="form-control" value="#6d2230">
+      <label>لون الهوية العميقة:</label>
+      <input type="color" id="colorWineDeep" class="form-control" value="#4a1620">
+      <label>لون الذهب:</label>
+      <input type="color" id="colorGold" class="form-control" value="#c4a76b">
+      <button class="btn-admin" onclick="saveDesignColors()">💾 حفظ وتطبيق الألوان</button>
+    </div>
+
+    <div id="tab-delivery-edit" class="admin-tab-content">
+      <h3>🚚 إعدادات التوصيل</h3>
+      <input type="text" id="editTopbarText" class="form-control">
+      <button class="btn-admin" onclick="saveDeliverySettings()">💾 حفظ</button>
+    </div>
+
+    <div id="tab-identity" class="admin-tab-content">
+      <h3>🏺 الهوية واللوجو</h3>
+      <input type="file" class="form-control" accept="image/*" onchange="uploadLogoFile(event)">
+      <input type="text" id="editStoreName" class="form-control">
+      <button class="btn-admin" onclick="saveStoreIdentity()">💾 حفظ الهوية</button>
+    </div>
+
+    <div id="tab-backup" class="admin-tab-content">
+      <h3>💾 النسخ الاحتياطي ورفع كافة الداتا والمنتجات (GitHub Sync)</h3>
+      <p style="font-size:14px; color:var(--muted); margin-bottom:15px;">قم بتصدير ملف الداتا بعد تعديلاتك وارفعه في مشروعك على جيثب لتثبيت كافة الصور والمنتجات دفعة واحدة للعملاء:</p>
+      <button class="btn-admin" style="background:#27ae60; margin-bottom:20px;" onclick="exportDataFile()">📥 تصدير ملف الداتا الكامل (JSON)</button>
+      <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:5px;">استيراد ملف الداتا (لتحميل كل الصور والمنتجات فوراً):</label>
+      <input type="file" class="form-control" accept=".json" onchange="importDataFile(event)">
+    </div>
+
+    <div id="tab-sec" class="admin-tab-content">
+      <h3>🔐 بيانات المشرف السري</h3>
+      <input type="email" id="adminNewEmail" class="form-control" placeholder="البريد الإلكتروني الجديد">
+      <input type="password" id="adminNewPass" class="form-control" placeholder="كلمة المرور الجديدة">
+      <button class="btn-admin" onclick="saveAdminCredentials()">🔐 تحديث البيانات</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let adminCreds = JSON.parse(localStorage.getItem('asala_admin_creds')) || { email: 'admin@asala.com', pass: '123456' };
+
+const defaultProducts = [
+  {id:101, name:"ترابيزة قلابة أرابيسك ملكي — صدف أبيض وأزرق", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"ترابيزة قلابة مصنوعة يدويًا، مطعّمة بصدف أبيض أصلي وأزرق.", story:"حين يلتقي عبق الأصالة بفنّ الصدف البحري.", price:"154.000 د.ك", oldPrice:"185.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:102, name:"ترابيزة أربع أرجل — إصدار سلطاني", royal:"👑 إصدار سلطاني", cat:"ترابيزات", desc:"ترابيزة بأربع أرجل، صدف طبيعي وخشب زان روماني.", story:"صناعة يدوية 100%، ارتفاع 50 سم.", price:"207.000 د.ك", oldPrice:"249.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:103, name:"ترابيزة قلابة نقش أرابيسك — صدف أصلي 100%", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"قلابة بنقش أرابيسك، صدف أبيض وأزرق أصلي وأرابيسك يدوي.", story:"خشب زان روماني، تشطيب ملكي.", price:"209.000 د.ك", oldPrice:"251.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:104, name:"طاولة جانبية دائرية — نقشة إسلامية", royal:"👑 إصدار إسلامي", cat:"ترابيزات", desc:"طاولة دائرية بتصميم إسلامي، صدف أبيض وأبالون.", story:"صناعة يدوية 100%، خامات فاخرة.", price:"500.000 د.ك", oldPrice:"600.000 د.ك", stock:"in", featured:"yes", image:""},
+  
+  /* المنتجات الجديدة المضافة من الصور والفيديوهات الحديثة */
+  {id:301, name:"صندوق قبة فخم — تطعيم صدف أبيض وبحري أصلي", royal:"👑 إصدار عاشق ومعشوق", cat:"صناديق وشكمجيات", desc:"تحفة فنية يدوية بنقوش هندسية دقيقة وأرجل مطعمة بالصدف.", story:"فنيّة عريقة صُنعت بحب من القلب لتزين القصور.", price:"420.000 د.ك", oldPrice:"490.000 د.ك", stock:"in", featured:"yes", image:"1.jpg.jpeg"},
+  {id:302, name:"ترابيزة ثمانية برجلين ومحار — صدف طبيعي", royal:"👑 إصدار الوجاهة الملكية", cat:"ترابيزات", desc:"ترابيزة ثمانية الأضلاع بنقوش هندسية وتطعيم محار وصدف أصلي.", story:"رمز الأصالة والوجاهة بتفاصيل يدوية دقيقة.", price:"180.000 د.ك", oldPrice:"220.000 د.ك", stock:"in", featured:"yes", image:"2.jpg.jpeg"},
+  {id:303, name:"شكمجية مكتبية أدراج متعددة — صدف طبيعي", royal:"👑 الإصدار السلطاني", cat:"صناديق وشكمجيات", desc:"شكمجية مكتبية مميزة بأدراج متعددة وتطعيم صدف كامل.", story:"حرفية تنافس المتاحف العالمية.", price:"250.000 د.ك", oldPrice:"300.000 د.ك", stock:"in", featured:"yes", image:"3.jpg.jpeg"},
+  {id:304, name:"ترابيزة مسدسة بومبيه — زخارف هندسية", royal:"👑 إصدار فني خاص", cat:"ترابيزات", desc:"ترابيزة مسدسة بأسلوب بومبيه فاخر وزخارف صدفية دقيقة.", story:"أناقة تضفي رونقاً على طاولات الاستقبال.", price:"160.000 د.ك", oldPrice:"190.000 د.ك", stock:"in", featured:"yes", image:"4.jpg.jpeg"},
+  {id:305, name:"صندوق كبير قبة مسطحة — صدف أصلي تجوري", royal:"👑 إصدار ملكي خاص", cat:"صناديق وشكمجيات", desc:"صندوق كبير جداً قبة مسطحة مطعم بصدف أبيض وبحري وزخارف هندسية.", story:"تحفة فنية ضخمة صُنعت بأيدي ألمع الحرفيين.", price:"550.000 د.ك", oldPrice:"650.000 د.ك", stock:"in", featured:"yes", image:"5.jpg.jpeg"},
+  {id:306, name:"تشكيلة صناديق قبة فاخرة — صدف بحري وأبيض", royal:"👑 إصدار عاشق ومعشوق", cat:"صناديق وشكمجيات", desc:"تشكيلة صناديق وشكمجيات قبة بأحجام ونقوش متعددة.", story:"صنعت بحب للتعبير عن الفخامة الأصيلة.", price:"380.000 د.ك", oldPrice:"450.000 د.ك", stock:"in", featured:"yes", image:"33.jpg.jpeg"},
+  {id:307, name:"علب هندسية ومثمنة — صدف طبيعي لوكس", royal:"👑 إصدار فاخر", cat:"صناديق وشكمجيات", desc:"علب مجوهرات وشكمجيات بأشكال هندسية ومثمنة مطعمة بالصدف.", story:"تفاصيل دقيقة لعشاق المقتنيات النادرة.", price:"95.000 د.ك", oldPrice:"120.000 د.ك", stock:"in", featured:"no", image:"34.jpg.jpeg"},
+  {id:308, name:"طقم كوستر خماسي ومثمن — حافظة صدف", royal:"👑 إصدار الضيافة الملكية", cat:"إكسسوارات", desc:"طقم قواعد أكواب (كوستر) مطعم بالصدف مع علبة حافظة فاخرة.", story:"إضافة راقية لطاولات الضيافة والمكاتب.", price:"45.000 د.ك", oldPrice:"60.000 د.ك", stock:"in", featured:"no", image:"35.jpg.jpeg"},
+  {id:309, name:"تشكيلة شكمجيات الفروع — صدف وأرابيسك", royal:"👑 إصدار معروضات المعرض", cat:"صناديق وشكمجيات", desc:"مجموعة متنوعة من الشكمجيات والصناديق المعروضة في معارضنا.", story:"قطع حصرية جاهزة للتسليم المباشر.", price:"210.000 د.ك", oldPrice:"260.000 د.ك", stock:"in", featured:"no", image:"36.jpg.jpeg"},
+
+  {id:105, name:"طاولة زهر كلاسيك — استيكر هندسي", royal:"👑 إصدار كلاسيكي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر بنقشة إسلامية، مقاس 52×52 سم عند الفتح.", story:"طباعة عالية الجودة.", price:"185.000 د.ك", oldPrice:"222.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:106, name:"طاولة زهر جلاكسي — صدف أسترالي وأحمر", royal:"👑 إصدار ملكي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر صدف أصلي 100%، جلد ترسة وعظم جمل.", story:"خامات فاخرة: صدف أسترالي وأحمر.", price:"520.000 د.ك", oldPrice:"624.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:107, name:"طاولة زهر صدف 10% — إصدار اقتصادي", royal:"👑 إصدار اقتصادي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر بصدف صناعي وجلد ترسة صناعي.", story:"خيار اقتصادي بنفس الجودة الشكلية.", price:"195.000 د.ك", oldPrice:"234.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:108, name:"طقم شطرنج عظم جمل كبير + بورد صدف", royal:"👑 إصدار ملكي", cat:"طاولات زهر وشطرنج", desc:"طقم شطرنج كبير، قطع عظم جمل خرط يدوي، بورد صدف أصلي.", story:"تحفة فنية كاملة.", price:"298.000 د.ك", oldPrice:"358.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:109, name:"طقم شطرنج عظم جمل وسط + بورد صدف", royal:"👑 إصدار ملكي", cat:"طاولات زهر وشطرنج", desc:"طقم شطرنج وسط، نفس الجودة، حجم أنسب.", story:"قطع عظم جمل، بورد صدف.", price:"226.000 د.ك", oldPrice:"271.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:110, name:"قطع شطرنج خرط سوبر لوكس — عظم جمل", royal:"👑 إصدار فاخر", cat:"طاولات زهر وشطرنج", desc:"قطع شطرنج خرط سوبر لوكس من عظم الجمل.", story:"تشطيب يدوي كلاسيكي.", price:"222.000 د.ك", oldPrice:"266.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:111, name:"قطع شطرنج ميلامين ألماني — كلاسيك", royal:"👑 إصدار كلاسيكي", cat:"طاولات زهر وشطرنج", desc:"قطع شطرنج ميلامين ألماني، شكل كلاسيكي.", story:"خيار اقتصادي عملي.", price:"142.000 د.ك", oldPrice:"170.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:112, name:"قطع شطرنج فرعوني لوكس — عظم جمل", royal:"👑 إصدار فرعوني", cat:"طاولات زهر وشطرنج", desc:"قطع شطرنج فرعوني لوكس، مشغول يدويًا.", story:"تصميم فرعوني أصيل.", price:"265.000 د.ك", oldPrice:"318.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:113, name:"صندوق قبة مثمنة — صدف وقرن جاموس", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"صندوق قبة مثمنة، صدف أصلي وقرن جاموس. مقاس 43×43×26.", story:"قطعة فاخرة نادرة.", price:"1000.000 د.ك", oldPrice:"1200.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:114, name:"صندوق مستطيل نقش — صدف أصلي", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"صندوق مستطيل، نقش صدف أصلي. مقاس 50×30×35.", story:"تشطيب يدوي كامل.", price:"411.000 د.ك", oldPrice:"493.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:115, name:"صندوق مستطيل ورد — صدف أصلي", royal:"👑 إصدار كلاسيكي", cat:"صناديق وشكمجيات", desc:"صندوق مستطيل بنقشة ورد. مقاس 30×20×23.", story:"صناعة يدوية دقيقة.", price:"222.000 د.ك", oldPrice:"266.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:116, name:"صندوق بومبيه — صدف أصلي", royal:"👑 إصدار كلاسيكي", cat:"صناديق وشكمجيات", desc:"صندوق بومبيه بأحجام متعددة.", story:"خيارات متعددة لكل الاحتياجات.", price:"78.000 د.ك", oldPrice:"94.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:117, name:"علبة قبة شامي — صدف أبيض وأزرق", royal:"👑 إصدار شامي", cat:"صناديق وشكمجيات", desc:"علبة قبة بصدف أبيض وأزرق أصلي وجلد ترسة.", story:"تشطيب شامي فاخر.", price:"195.000 د.ك", oldPrice:"234.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:118, name:"علبة صدف برجل — إصدار نقش", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"علبة بأرجل، نقش صدف.", story:"ثلاثة مقاسات متاحة.", price:"145.000 د.ك", oldPrice:"174.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:119, name:"علبة بومبيه أبيض — صدف ونحاس", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"علبة بومبيه بصدف أبيض وأزرق ونحاس أصلي.", story:"مزيج فريد من الخامات.", price:"165.000 د.ك", oldPrice:"198.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:120, name:"صندوق مثمن بيضاوي — صدف أسترالي", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"صندوق مثمن بيضاوي بصدف أبيض وأسترالي.", story:"تشطيب فاخر.", price:"240.000 د.ك", oldPrice:"288.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:121, name:"صندوق مخدة مستطيلة — صدف ونحاس", royal:"👑 إصدار ملكي", cat:"صناديق وشكمجيات", desc:"صندوق مخدة بصدف ونحاس وجلد ترسة.", story:"تصميم مريح للعين.", price:"210.000 د.ك", oldPrice:"252.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:122, name:"صندوق مثمن بيضاوي ورد — صدف أصلي", royal:"👑 إصدار كلاسيكي", cat:"صناديق وشكمجيات", desc:"صندوق مثمن بيضاوي بنقشة ورد.", story:"صدف أبيض وأزرق أصلي.", price:"195.000 د.ك", oldPrice:"234.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:123, name:"طقم صواني مستطيل — صدف أبيض", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"طقم 3 صواني مستطيلة بصدف أبيض.", story:"صناعة يدوية أصيلة.", price:"107.000 د.ك", oldPrice:"128.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:124, name:"طقم صواني مثمن — صدف أحمر 100%", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"طقم 3 صواني مثمنة، صدف أحمر أصلي 100%.", story:"خامات نادرة.", price:"95.000 د.ك", oldPrice:"114.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:125, name:"طقم صواني مربع ورد — صدف أصلي", royal:"👑 إصدار كلاسيكي", cat:"صواني تقديم", desc:"طقم 3 صواني مربعة بنقشة ورد.", story:"مقاسات 40×40 و35×35.", price:"67.000 د.ك", oldPrice:"80.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:126, name:"صينية بليكسيجلاس — شامي", royal:"👑 إصدار شامي", cat:"صواني تقديم", desc:"صينية تقديم بليكسيجلاس وصدف.", story:"متينة وأنيقة.", price:"51.000 د.ك", oldPrice:"61.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:127, name:"طقم صواني مثمن — صدف أصلي 100%", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"طقم 3 صواني مثمنة بصدف أصلي 100%.", story:"مقاسات 35/30/27 سم.", price:"112.000 د.ك", oldPrice:"134.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:128, name:"طقم مبخرة خرط — إصدار أبيض", royal:"👑 إصدار كلاسيكي", cat:"مباخر", desc:"طقم مبخرة خرط، صينية + مبخرة.", story:"تشطيب أبيض فاخر.", price:"86.000 د.ك", oldPrice:"103.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:129, name:"طقم مبخرة مكة — صدف أبيض 100%", royal:"👑 إصدار مكة", cat:"مباخر", desc:"طقم مبخرة مكة، صدف أبيض أصلي 100%.", story:"تصميم مكة المكرمة.", price:"87.000 د.ك", oldPrice:"104.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:130, name:"مبخرة مكعب شامي — صدف أصلي", royal:"👑 إصدار شامي", cat:"مباخر", desc:"مبخرة مكعب، مقاس 10×10×10.", story:"تصميم هندسي أنيق.", price:"31.000 د.ك", oldPrice:"37.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:131, name:"مبخرة هرم ورد — شامي", royal:"👑 إصدار شامي", cat:"مباخر", desc:"مبخرة هرم بنقشة ورد.", story:"قطعة ديكور فاخرة.", price:"29.000 د.ك", oldPrice:"35.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:132, name:"مبخرة هرم مودرن — شامي", royal:"👑 إصدار مودرن", cat:"مباخر", desc:"مبخرة هرم مودرن.", story:"تصميم عصري.", price:"25.000 د.ك", oldPrice:"30.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:133, name:"طقم مكتب كامل 13 قطعة — صدف 75%", royal:"👑 إصدار ملكي", cat:"أثاث مكتبي", desc:"طقم مكتب 13 قطعة متكامل.", story:"الطقم الأكثر فخامة.", price:"343.000 د.ك", oldPrice:"412.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:134, name:"طقم مكتب كامل 13 قطعة — صدف 50%", royal:"👑 إصدار كلاسيكي", cat:"أثاث مكتبي", desc:"طقم مكتب 13 قطعة، صدف 50%.", story:"خيار اقتصادي متكامل.", price:"265.000 د.ك", oldPrice:"318.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:135, name:"برواز سورة الفلق مدور — صدف أصلي", royal:"👑 إصدار قرآني", cat:"لوحات قرآنية", desc:"برواز مدور لسورة الفلق، صدف أصلي.", story:"هدية روحانية فاخرة.", price:"45.000 د.ك", oldPrice:"54.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:136, name:"برواز آية الكرسي بيضاوي — صدف 30%", royal:"👑 إصدار قرآني", cat:"لوحات قرآنية", desc:"برواز بيضاوي لآية الكرسي.", story:"تشطيب جميل.", price:"21.000 د.ك", oldPrice:"25.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:137, name:"برواز سورة الإخلاص — صدف 30%", royal:"👑 إصدار قرآني", cat:"لوحات قرآنية", desc:"برواز مستطيل لسورة الإخلاص.", story:"هدية روحانية.", price:"18.000 د.ك", oldPrice:"22.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:138, name:"باسكت صدف أبيض — ديكور", royal:"👑 إصدار كلاسيكي", cat:"ديكورات", desc:"باسكت صدف أبيض دقيق.", story:"ديكور منزلي فاخر.", price:"122.000 د.ك", oldPrice:"146.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:139, name:"ساعة حائط صدف — شامي", royal:"👑 إصدار شامي", cat:"ديكورات", desc:"ساعة حائط صدف فاخرة.", story:"وظيفة وديكور معًا.", price:"256.000 د.ك", oldPrice:"307.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:140, name:"زهر فيروز 10 مم", royal:"👑 إصدار فاخر", cat:"إكسسوارات", desc:"زهر فيروز مقاس 10 مم.", story:"إكسسوار فاخر.", price:"7.000 د.ك", oldPrice:"8.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:201, name:"يد 20 مربع — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب مربع، صدف طبيعي.", story:"مقبض فاخر للأبواب.", price:"18.000 د.ك", oldPrice:"22.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:202, name:"يد جمل — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب بنقش جمل، صدف طبيعي.", story:"تصميم فريد.", price:"19.000 د.ك", oldPrice:"23.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:203, name:"يد بطنين — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب ببطنين، صدف طبيعي.", story:"تصميم أنيق.", price:"19.000 د.ك", oldPrice:"23.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:204, name:"يد ببطن — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب ببطن، صدف طبيعي.", story:"تصميم كلاسيكي.", price:"19.000 د.ك", oldPrice:"23.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:205, name:"يد رائري — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب داتري، صدف طبيعي.", story:"تصميم مميز.", price:"17.000 د.ك", oldPrice:"20.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:206, name:"يد ربع دائر — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب ربع دائر، صدف طبيعي.", story:"تصميم هندسي.", price:"19.000 د.ك", oldPrice:"23.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:207, name:"يد مقصوف — صدف طبيعي", royal:"👑 إصدار فني", cat:"مداخل وبيهات", desc:"يد باب مقصوف، صدف طبيعي.", story:"تصميم فريد.", price:"14.000 د.ك", oldPrice:"17.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:208, name:"يد عربي — صدف طبيعي", royal:"👑 إصدار عربي", cat:"مداخل وبيهات", desc:"يد باب عربي، صدف طبيعي.", story:"تصميم عربي أصيل.", price:"14.000 د.ك", oldPrice:"17.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:209, name:"ترابيزة مثمن 4 بوف — إصدار ملكي", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"ترابيزة مثمنة، 4 بوف، صدف طبيعي.", story:"تصميم ملكي.", price:"55.000 د.ك", oldPrice:"66.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:210, name:"ترابيزة مسدسة 3 بوف 120 سم سفرة", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"ترابيزة مسدسة 3 بوف، 120 سم.", story:"مقاس مناسب للسفرة.", price:"52.000 د.ك", oldPrice:"62.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:211, name:"ترابيزة نجمة 8 بوف — إصدار ملكي", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"ترابيزة نجمة 8 بوف، صدف طبيعي.", story:"تصميم نجمة فاخر.", price:"150.000 د.ك", oldPrice:"180.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:212, name:"طقم صواني هلال 3 قطع — صدف طبيعي", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"طقم صواني هلال 3 قطع، صدف طبيعي.", story:"تصميم هلال.", price:"5.000 د.ك", oldPrice:"6.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:213, name:"طقم صواني جونت بيضاوي 3 قطع", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"طقم صواني جونت بيضاوي من الداخل، 3 قطع.", story:"تصميم أنيق.", price:"5.000 د.ك", oldPrice:"6.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:214, name:"طقم صواني فراشة 3 قطع", royal:"👑 إصدار فني", cat:"صواني تقديم", desc:"طقم صواني فراشة، 3 قطع.", story:"تصميم فراشة مميز.", price:"45.000 د.ك", oldPrice:"55.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:215, name:"طقم صواني مستطيل لوكس 3 قطع", royal:"👑 إصدار لوكس", cat:"صواني تقديم", desc:"طقم صواني مستطيل لوكس، 3 قطع.", story:"تصميم فاخر.", price:"65.000 د.ك", oldPrice:"75.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:216, name:"طقم صواني مثمن 3 قطع", royal:"👑 إصدار كلاسيكي", cat:"صواني تقديم", desc:"طقم صواني مثمن، 3 قطع.", story:"تصميم كلاسيكي.", price:"60.000 د.ك", oldPrice:"70.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:217, name:"طقم صواني مثمن 3 قطع لوكس", royal:"👑 إصدار لوكس", cat:"صواني تقديم", desc:"طقم صواني مثمن لوكس، 3 قطع.", story:"تصميم فاخر.", price:"85.000 د.ك", oldPrice:"100.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:218, name:"طقم صواني مستطيل 3 قطع", royal:"👑 إصدار كلاسيكي", cat:"صواني تقديم", desc:"طقم صواني مستطيل، 3 قطع.", story:"تصميم عملي.", price:"40.000 د.ك", oldPrice:"50.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:219, name:"صواني تقديم 4 قطع", royal:"👑 إصدار ملكي", cat:"صواني تقديم", desc:"صواني تقديم، 4 قطع.", story:"طقم كامل.", price:"70.000 د.ك", oldPrice:"85.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:220, name:"طقم جونت زان 3 قطع", royal:"👑 إصدار ملكي", cat:"أثاث ملكي", desc:"طقم جونت زان، 3 قطع، صدف طبيعي.", story:"خشب زان أصلي.", price:"7.000 د.ك", oldPrice:"8.000 د.ك", stock:"in", featured:"no", image:""}
+];
+
+let products = JSON.parse(localStorage.getItem('asala_products_v16')) || defaultProducts;
+let siteMedia = JSON.parse(localStorage.getItem('asala_media_v16')) || { logo: 'logo.jpg', heroVid: '', heroImg: 'cover.jpg' };
+let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v16')) || {
+  name: "أصالة التراث المصري",
+  slogan: "عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر",
+  topbar: "🚚 توصيل من الكويت إلى الخليج والعالم — تفصيل 15-20 يومًا — ضمان أصالة مدى الحياة"
+};
+let siteColors = JSON.parse(localStorage.getItem('asala_colors_v16')) || { wine: '#6d2230', wineDeep: '#4a1620', gold: '#c4a76b' };
+
+let currentCategory = 'الكل';
+let currentSearch = '';
+let currentPage = 1;
+const itemsPerPage = 12;
+let activeProductForOrder = null;
+let tempProductImg = "";
+const waNumber = "96551118069";
+
+function applyColors() {
+  document.documentElement.style.setProperty('--wine', siteColors.wine);
+  document.documentElement.style.setProperty('--wine-deep', siteColors.wineDeep);
+  document.documentElement.style.setProperty('--gold', siteColors.gold);
+}
+
+function renderAll() {
+  applyColors();
+  document.getElementById('storeName').textContent = storeTexts.name;
+  document.getElementById('footerName').textContent = storeTexts.name;
+  document.getElementById('sloganText').textContent = storeTexts.slogan;
+  document.getElementById('topbarText').textContent = storeTexts.topbar;
+
+  if(siteMedia.logo) document.getElementById('brandLogo').src = siteMedia.logo;
+
+  const mediaContainer = document.getElementById('heroMediaContainer');
+  if(siteMedia.heroVid) {
+    mediaContainer.innerHTML = `<video autoplay muted loop playsinline><source src="${siteMedia.heroVid}" type="video/mp4"></video>`;
+  } else if(siteMedia.heroImg) {
+    mediaContainer.innerHTML = `<img src="${siteMedia.heroImg}" alt="غلاف">`;
+  } else {
+    mediaContainer.innerHTML = `<img src="cover.jpg" alt="غلاف افتراضي">`;
+  }
+
+  const featuredGrid = document.getElementById('featuredGrid');
+  const featuredProducts = products.filter(p => p.featured === 'yes');
+  featuredGrid.innerHTML = featuredProducts.map(p => `
+    <div class="product-card" onclick="openProductModal(${p.id})">
+      <div class="product-img">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:50px;">🐚</div>`}
+        <span class="badge">🌟 مميز</span>
+      </div>
+      <div class="product-info">
+        <span class="royal-tag">${p.royal || '👑 إصدار ملكي'}</span>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="product-price">${p.price}</div>
+        <button class="btn-wa" onclick="event.stopPropagation(); openProductModal(${p.id});">🔍 عرض التحفة والطلب</button>
+      </div>
+    </div>
+  `).join('');
+
+  let filtered = products.filter(p => {
+    let matchCat = currentCategory === 'الكل' || p.cat === currentCategory;
+    let matchSearch = (p.name || '').toLowerCase().includes(currentSearch.toLowerCase()) || (p.desc || '').toLowerCase().includes(currentSearch.toLowerCase());
+    return matchCat && matchSearch;
+  });
+
+  const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+  if(currentPage > totalPages) currentPage = 1;
+  const start = (currentPage - 1) * itemsPerPage;
+  const paginatedItems = filtered.slice(start, start + itemsPerPage);
+
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = paginatedItems.map(p => `
+    <div class="product-card" onclick="openProductModal(${p.id})">
+      <div class="product-img">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:50px;">🐚</div>`}
+        <span class="badge">${p.stock === 'in' ? 'متوفر للتفصيل' : 'نفدت الكمية'}</span>
+      </div>
+      <div class="product-info">
+        <span class="royal-tag">${p.royal || '👑 إصدار ملكي'}</span>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="product-price">${p.price} ${p.oldPrice ? `<span style="font-size:14px;color:#999;text-decoration:line-through;margin-right:8px">${p.oldPrice}</span>` : ''}</div>
+        <button class="btn-wa" onclick="event.stopPropagation(); openProductModal(${p.id});">🔍 عرض التحفة والطلب</button>
+      </div>
+    </div>
+  `).join('');
+
+  const paginationCon = document.getElementById('paginationContainer');
+  let pageBtns = '';
+  for(let i=1; i<=totalPages; i++) {
+    pageBtns += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+  }
+  paginationCon.innerHTML = totalPages > 1 ? pageBtns : '';
+}
+
+function changePage(p) {
+  currentPage = p;
+  renderAll();
+  window.scrollTo({ top: document.getElementById('products').offsetTop - 100, behavior: 'smooth' });
+}
+
+function setCategory(cat, btn) {
+  currentCategory = cat;
+  currentPage = 1;
+  document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+
+function filterProducts() {
+  currentSearch = document.getElementById('searchInput').value;
+  currentPage = 1;
+  renderAll();
+}
+
+function openProductModal(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  activeProductForOrder = p;
+  
+  const imgCon = document.getElementById('modalImgContainer');
+  imgCon.innerHTML = p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div style="font-size:80px;">🐚</div>`;
+
+  document.getElementById('modalRoyal').textContent = p.royal || '👑 إصدار ملكي';
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalStory').textContent = p.story || '';
+  document.getElementById('modalPrice').textContent = p.price;
+
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientPhone').value = '';
+  document.getElementById('clientAddress').value = '';
+  document.getElementById('productModal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('productModal').classList.remove('open'); }
+
+function submitOrderViaWa() {
+  if(!activeProductForOrder) return;
+  const name = document.getElementById('clientName').value;
+  const phone = document.getElementById('clientPhone').value;
+  const address = document.getElementById('clientAddress').value;
+
+  if(!name || !phone || !address) { alert('يرجى تعبئة جميع بيانات الطلب!'); return; }
+
+  const msg = `🛍️ *طلب تحفة جديدة عبر الموقع*:\n\n🔹 *التحفة:* ${activeProductForOrder.name}\n💰 *السعر:* ${activeProductForOrder.price}\n\n👤 *بيانات العميل:*\n- الاسم: ${name}\n- الهاتف: ${phone}\n- العنوان: ${address}\n\n✨ أصالة التراث المصري - عاشق ومعشوق`;
+  window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+  closeModal();
+}
+
+function openLoginModal() { document.getElementById('loginModal').classList.add('open'); }
+function closeLoginModal() { document.getElementById('loginModal').classList.remove('open'); }
+
+function checkAdminLogin() {
+  const email = document.getElementById('adminEmailInput').value;
+  const pass = document.getElementById('adminPassInput').value;
+  if(email === adminCreds.email && pass === adminCreds.pass) {
+    closeLoginModal();
+    document.getElementById('adminPanelModal').classList.add('open');
+    renderAdminProductsList();
+    document.getElementById('editStoreName').value = storeTexts.name;
+    document.getElementById('editTopbarText').value = storeTexts.topbar;
+    document.getElementById('colorWine').value = siteColors.wine;
+    document.getElementById('colorWineDeep').value = siteColors.wineDeep;
+    document.getElementById('colorGold').value = siteColors.gold;
+    document.getElementById('adminNewEmail').value = adminCreds.email;
+  } else {
+    alert('البريد أو كلمة المرور غير صحيحة!');
+  }
+}
+function closeAdminPanel() { document.getElementById('adminPanelModal').classList.remove('open'); }
+
+function switchAdminTab(evt, tabId) {
+  document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  evt.currentTarget.classList.add('active');
+}
+
+function handleProductFile(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      tempProductImg = e.target.result;
+      document.getElementById('p-image-val').value = tempProductImg;
+      alert('✅ تم رفع الصورة بنجاح وربطها بالمنتج!');
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function saveProductData() {
+  const editId = document.getElementById('edit-id').value;
+  const name = document.getElementById('p-name').value;
+  const price = document.getElementById('p-price').value;
+  if(!name || !price) { alert('يرجى إدخال اسم المنتج والسعر الحالي!'); return; }
+
+  const pData = {
+    id: editId ? parseInt(editId) : Date.now(),
+    name: name,
+    cat: document.getElementById('p-cat').value,
+    royal: document.getElementById('p-royal').value || '👑 إصدار ملكي',
+    desc: document.getElementById('p-desc').value,
+    story: document.getElementById('p-story').value,
+    price: price,
+    oldPrice: document.getElementById('p-old').value,
+    featured: document.getElementById('p-featured').value,
+    image: tempProductImg || document.getElementById('p-image-val').value || '',
+    stock: document.getElementById('p-stock').value
+  };
+
+  if(editId) {
+    const index = products.findIndex(p => p.id === parseInt(editId));
+    if(index !== -1) {
+      if(!pData.image) pData.image = products[index].image;
+      products[index] = pData;
+    }
+  } else {
+    products.unshift(pData);
+  }
+
+  localStorage.setItem('asala_products_v16', JSON.stringify(products));
+  renderAll();
+  renderAdminProductsList();
+  resetForm();
+  alert('✅ تم حفظ المنتج والصورة بنجاح!');
+}
+
+function editProduct(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  document.getElementById('edit-id').value = p.id;
+  document.getElementById('p-name').value = p.name;
+  document.getElementById('p-cat').value = p.cat;
+  document.getElementById('p-royal').value = p.royal || '';
+  document.getElementById('p-desc').value = p.desc || '';
+  document.getElementById('p-story').value = p.story || '';
+  document.getElementById('p-price').value = p.price || '';
+  document.getElementById('p-old').value = p.oldPrice || '';
+  document.getElementById('p-featured').value = p.featured || 'no';
+  document.getElementById('p-stock').value = p.stock || 'in';
+  document.getElementById('p-image-val').value = p.image || '';
+  tempProductImg = p.image || '';
+
+  document.getElementById('formTitle').textContent = "✏️ تعديل المنتج: " + p.name;
+  const formSec = document.getElementById('formSection');
+  if(formSec) formSec.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetForm() {
+  document.getElementById('edit-id').value = '';
+  document.getElementById('p-name').value = '';
+  document.getElementById('p-price').value = '';
+  document.getElementById('p-old').value = '';
+  document.getElementById('p-desc').value = '';
+  document.getElementById('p-story').value = '';
+  document.getElementById('p-file').value = '';
+  document.getElementById('p-image-val').value = '';
+  document.getElementById('p-featured').value = 'no';
+  tempProductImg = "";
+  document.getElementById('formTitle').textContent = "➕ إضافة / تعديل منتج";
+}
+
+function renderAdminProductsList() {
+  document.getElementById('prodCount').textContent = products.length;
+  document.getElementById('tabProdBadge').textContent = products.length;
+  const list = document.getElementById('adminProductsList');
+  list.innerHTML = products.map((p) => `
+    <div class="admin-product-row">
+      <div><b>🐚 ${p.name}</b> — <span style="color:var(--wine); font-weight:bold;">${p.price}</span> ${p.featured === 'yes' ? '🌟 (في الواجهة)' : ''}</div>
+      <div>
+        <button class="btn-edit" onclick="editProduct(${p.id})">✏️ تعديل</button>
+        <button class="btn-danger" onclick="deleteProduct(${p.id})">🗑️ حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function deleteProduct(id) {
+  if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+    products = products.filter(p => p.id !== id);
+    localStorage.setItem('asala_products_v16', JSON.stringify(products));
+    renderAll();
+    renderAdminProductsList();
+  }
+}
+
+function uploadHeroVideo(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      siteMedia.heroVid = e.target.result;
+      siteMedia.heroImg = "";
+      localStorage.setItem('asala_media_v16', JSON.stringify(siteMedia));
+      renderAll();
+      alert('🎬 تم رفع وتشغيل الفيديو للغلاف!');
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function uploadHeroImage(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      siteMedia.heroImg = e.target.result;
+      siteMedia.heroVid = "";
+      localStorage.setItem('asala_media_v16', JSON.stringify(siteMedia));
+      renderAll();
+      alert('🖼️ تم رفع صورة الغلاف بنجاح!');
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function clearHeroMedia() {
+  siteMedia.heroVid = "";
+  siteMedia.heroImg = "";
+  localStorage.setItem('asala_media_v16', JSON.stringify(siteMedia));
+  renderAll();
+}
+
+function uploadLogoFile(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      siteMedia.logo = e.target.result;
+      localStorage.setItem('asala_media_v16', JSON.stringify(siteMedia));
+      renderAll();
+      alert('🏺 تم تحديث اللوجو الأساسي!');
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function saveStoreIdentity() {
+  storeTexts.name = document.getElementById('editStoreName').value;
+  localStorage.setItem('asala_texts_v16', JSON.stringify(storeTexts));
+  renderAll();
+  alert('✅ تم حفظ الهوية بنجاح!');
+}
+
+function saveDeliverySettings() {
+  storeTexts.topbar = document.getElementById('editTopbarText').value;
+  localStorage.setItem('asala_texts_v16', JSON.stringify(storeTexts));
+  renderAll();
+  alert('✅ تم حفظ إعدادات التوصيل بنجاح!');
+}
+
+function saveDesignColors() {
+  siteColors.wine = document.getElementById('colorWine').value;
+  siteColors.wineDeep = document.getElementById('colorWineDeep').value;
+  siteColors.gold = document.getElementById('colorGold').value;
+  localStorage.setItem('asala_colors_v16', JSON.stringify(siteColors));
+  renderAll();
+  alert('🎨 تم حفظ وتطبيق الألوان بنجاح!');
+}
+
+function saveAdminCredentials() {
+  const email = document.getElementById('adminNewEmail').value;
+  const pass = document.getElementById('adminNewPass').value;
+  if(email && pass) {
+    adminCreds = { email, pass };
+    localStorage.setItem('asala_admin_creds', JSON.stringify(adminCreds));
+    alert('🔐 تم تحديث البيانات بنجاح!');
+  }
+}
+
+function exportDataFile() {
+  const data = { creds: adminCreds, media: siteMedia, products: products, texts: storeTexts, colors: siteColors };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `asala_full_data_${Date.now()}.json`;
+  a.click();
+  alert('📥 تم تصدير ملف الداتا الكامل بنجاح!');
+}
+
+function importDataFile(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if(imported.products) products = imported.products;
+        if(imported.media) siteMedia = imported.media;
+        if(imported.texts) storeTexts = imported.texts;
+        if(imported.colors) siteColors = imported.colors;
+        if(imported.creds) adminCreds = imported.creds;
+        localStorage.setItem('asala_products_v16', JSON.stringify(products));
+        localStorage.setItem('asala_media_v16', JSON.stringify(siteMedia));
+        localStorage.setItem('asala_texts_v16', JSON.stringify(storeTexts));
+        localStorage.setItem('asala_colors_v16', JSON.stringify(siteColors));
+        localStorage.setItem('asala_admin_creds', JSON.stringify(adminCreds));
+        renderAll();
+        renderAdminProductsList();
+        alert('✅ تم استيراد كافة المنتجات والصور والداتا بالكامل بنجاح!');
+      } catch(err) {
+        alert('ملف غير صالح!');
+      }
+    };
+    reader.readAsText(file);
+  }
+}
+
+document.getElementById('yearSpan').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', renderAll);
+</script>
+
+</body>
+</html>
